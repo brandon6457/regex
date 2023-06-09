@@ -49,7 +49,27 @@ this will match any string that contains a-z, 0-9, _, ., or -. The quantifier + 
 
 ### Grouping Constructs
 
+Continuing with the code for matching an email:
+
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+([a-z0-9_\.-]+) is the first group that appears in our regex. This must be true before moving on to "match" the next part of the code. ([\da-z\.-]+) is the second group that appears in our regex. ([a-z\.]{2,6}) is the third group that appears in our regex.
+
+When matching, we have to make sure we are following the guidelines of the group before moving on to the next group.
+
 ### Bracket Expressions
+
+Continuing with the code for matching an email:
+
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+The following is the bracket expression.
+
+[a-z0-9_\.-]
+
+The guidelines for matching the group. For this code snippet, it can contain letters a-z, numbers 0-9, an underscore, hyphen, or period.
+
+The period is an escaped character, so it required the backslash in order to be able to be matched.
 
 ### Character Classes
 
@@ -75,14 +95,28 @@ A regex flag is not used in the matching email code that is being used for this 
 
 /regex/
 
-Where the slashes denote where the regular expresssion starts and ends. A flag can be used after the slash to give more guidelines for our matching. The flags are:
+Where the slashes denote where the regular expression starts and ends. A flag can be used after the slash to give more guidelines for our matching. The flags are:
 
 g which stands for "global" which will allow for matching all the instances within a string that follow the matching guidelines set in the regular expression.
 m which stands for "multiline" which will search line by line rather than searching through a string as a whole.
-i which stands for "insensitive" will make the regular expression case-insensitive, so capitals and lower-case letters will not deture the matching.
+i which stands for "insensitive" will make the regular expression case-insensitive, so capitals and lower-case letters will not deter the matching.
 
 ### Character Escapes
 
+Based on the regex email code /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ the character escapes are as follows:
+
+\d: Matches any digit (equivalent to [0-9])
+
+\.: Matches a period/dot character
+
+\-: Matches a hyphen-minus character (needs to be escaped within square brackets to avoid being interpreted as a range)
+
+[a-z0-9_\.-]: Matches any lowercase letter, digit, underscore, period or hyphen-minus character
+
+[a-z\.]: Matches any lowercase letter or period character (used in the TLD of the email domain)
+
+Note that the backslashes () are used to escape the special meaning of certain characters and treat them as literal characters in the regex pattern.
+
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This tutorial was written by [Brandon Morgan](https://github.com/brandon6457). By clicking on my name, you can view other repositories that I have created and contributed to.
